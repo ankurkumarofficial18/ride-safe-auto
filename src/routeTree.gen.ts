@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RideRouteImport } from './routes/ride'
+import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as BookingRouteImport } from './routes/booking'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const RideRoute = RideRouteImport.update({
   id: '/ride',
   path: '/ride',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
   '/home': typeof HomeRoute
+  '/payment': typeof PaymentRoute
   '/ride': typeof RideRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
   '/home': typeof HomeRoute
+  '/payment': typeof PaymentRoute
   '/ride': typeof RideRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,15 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/booking': typeof BookingRoute
   '/home': typeof HomeRoute
+  '/payment': typeof PaymentRoute
   '/ride': typeof RideRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/booking' | '/home' | '/ride'
+  fullPaths: '/' | '/auth' | '/booking' | '/home' | '/payment' | '/ride'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/booking' | '/home' | '/ride'
-  id: '__root__' | '/' | '/auth' | '/booking' | '/home' | '/ride'
+  to: '/' | '/auth' | '/booking' | '/home' | '/payment' | '/ride'
+  id: '__root__' | '/' | '/auth' | '/booking' | '/home' | '/payment' | '/ride'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +85,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BookingRoute: typeof BookingRoute
   HomeRoute: typeof HomeRoute
+  PaymentRoute: typeof PaymentRoute
   RideRoute: typeof RideRoute
 }
 
@@ -86,6 +96,13 @@ declare module '@tanstack/react-router' {
       path: '/ride'
       fullPath: '/ride'
       preLoaderRoute: typeof RideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -124,6 +141,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BookingRoute: BookingRoute,
   HomeRoute: HomeRoute,
+  PaymentRoute: PaymentRoute,
   RideRoute: RideRoute,
 }
 export const routeTree = rootRouteImport
