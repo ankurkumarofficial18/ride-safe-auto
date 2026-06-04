@@ -90,7 +90,10 @@ function Home() {
             {mockAutos.map((a) => (
               <button
                 key={a.id}
-                onClick={() => navigate({ to: "/booking", search: { autoId: a.id } as any })}
+                onClick={() => {
+                  sessionStorage.setItem("autolink:autoId", a.id);
+                  navigate({ to: "/booking" });
+                }}
                 className="w-full rounded-2xl border bg-background p-3 text-left transition-colors hover:bg-accent"
               >
                 <div className="flex items-start gap-3">
