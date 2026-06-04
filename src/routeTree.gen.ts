@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RideRouteImport } from './routes/ride'
+import { Route as RatingRouteImport } from './routes/rating'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as PaymentRouteImport } from './routes/payment'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as BookingRouteImport } from './routes/booking'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RideRoute = RideRouteImport.update({
+  id: '/ride',
+  path: '/ride',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RatingRoute = RatingRouteImport.update({
+  id: '/rating',
+  path: '/rating',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentRoute = PaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingRoute = BookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/booking': typeof BookingRoute
+  '/history': typeof HistoryRoute
+  '/home': typeof HomeRoute
+  '/payment': typeof PaymentRoute
+  '/profile': typeof ProfileRoute
+  '/rating': typeof RatingRoute
+  '/ride': typeof RideRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/booking': typeof BookingRoute
+  '/history': typeof HistoryRoute
+  '/home': typeof HomeRoute
+  '/payment': typeof PaymentRoute
+  '/profile': typeof ProfileRoute
+  '/rating': typeof RatingRoute
+  '/ride': typeof RideRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/booking': typeof BookingRoute
+  '/history': typeof HistoryRoute
+  '/home': typeof HomeRoute
+  '/payment': typeof PaymentRoute
+  '/profile': typeof ProfileRoute
+  '/rating': typeof RatingRoute
+  '/ride': typeof RideRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/booking'
+    | '/history'
+    | '/home'
+    | '/payment'
+    | '/profile'
+    | '/rating'
+    | '/ride'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/booking'
+    | '/history'
+    | '/home'
+    | '/payment'
+    | '/profile'
+    | '/rating'
+    | '/ride'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/booking'
+    | '/history'
+    | '/home'
+    | '/payment'
+    | '/profile'
+    | '/rating'
+    | '/ride'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  BookingRoute: typeof BookingRoute
+  HistoryRoute: typeof HistoryRoute
+  HomeRoute: typeof HomeRoute
+  PaymentRoute: typeof PaymentRoute
+  ProfileRoute: typeof ProfileRoute
+  RatingRoute: typeof RatingRoute
+  RideRoute: typeof RideRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ride': {
+      id: '/ride'
+      path: '/ride'
+      fullPath: '/ride'
+      preLoaderRoute: typeof RideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rating': {
+      id: '/rating'
+      path: '/rating'
+      fullPath: '/rating'
+      preLoaderRoute: typeof RatingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment': {
+      id: '/payment'
+      path: '/payment'
+      fullPath: '/payment'
+      preLoaderRoute: typeof PaymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking': {
+      id: '/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof BookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +217,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  BookingRoute: BookingRoute,
+  HistoryRoute: HistoryRoute,
+  HomeRoute: HomeRoute,
+  PaymentRoute: PaymentRoute,
+  ProfileRoute: ProfileRoute,
+  RatingRoute: RatingRoute,
+  RideRoute: RideRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
