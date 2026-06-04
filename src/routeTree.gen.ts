@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RideRouteImport } from './routes/ride'
+import { Route as RatingRouteImport } from './routes/rating'
 import { Route as PaymentRouteImport } from './routes/payment'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as BookingRouteImport } from './routes/booking'
@@ -19,6 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const RideRoute = RideRouteImport.update({
   id: '/ride',
   path: '/ride',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RatingRoute = RatingRouteImport.update({
+  id: '/rating',
+  path: '/rating',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PaymentRoute = PaymentRouteImport.update({
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/booking': typeof BookingRoute
   '/home': typeof HomeRoute
   '/payment': typeof PaymentRoute
+  '/rating': typeof RatingRoute
   '/ride': typeof RideRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/booking': typeof BookingRoute
   '/home': typeof HomeRoute
   '/payment': typeof PaymentRoute
+  '/rating': typeof RatingRoute
   '/ride': typeof RideRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,30 @@ export interface FileRoutesById {
   '/booking': typeof BookingRoute
   '/home': typeof HomeRoute
   '/payment': typeof PaymentRoute
+  '/rating': typeof RatingRoute
   '/ride': typeof RideRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/booking' | '/home' | '/payment' | '/ride'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/booking'
+    | '/home'
+    | '/payment'
+    | '/rating'
+    | '/ride'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/booking' | '/home' | '/payment' | '/ride'
-  id: '__root__' | '/' | '/auth' | '/booking' | '/home' | '/payment' | '/ride'
+  to: '/' | '/auth' | '/booking' | '/home' | '/payment' | '/rating' | '/ride'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/booking'
+    | '/home'
+    | '/payment'
+    | '/rating'
+    | '/ride'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -86,6 +110,7 @@ export interface RootRouteChildren {
   BookingRoute: typeof BookingRoute
   HomeRoute: typeof HomeRoute
   PaymentRoute: typeof PaymentRoute
+  RatingRoute: typeof RatingRoute
   RideRoute: typeof RideRoute
 }
 
@@ -96,6 +121,13 @@ declare module '@tanstack/react-router' {
       path: '/ride'
       fullPath: '/ride'
       preLoaderRoute: typeof RideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rating': {
+      id: '/rating'
+      path: '/rating'
+      fullPath: '/rating'
+      preLoaderRoute: typeof RatingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/payment': {
@@ -142,6 +174,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookingRoute: BookingRoute,
   HomeRoute: HomeRoute,
   PaymentRoute: PaymentRoute,
+  RatingRoute: RatingRoute,
   RideRoute: RideRoute,
 }
 export const routeTree = rootRouteImport
