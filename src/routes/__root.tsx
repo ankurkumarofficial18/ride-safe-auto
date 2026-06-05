@@ -86,6 +86,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "TourBuddy" },
+      { name: "twitter:description", content: "The first live shared-auto tracking system for fixed-route corridors." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0eda4739-38c6-4892-bbb2-d20eda793a3f/id-preview-10534795--79dad419-dc49-4af7-8ba1-cb9be914354e.lovable.app-1780641143365.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0eda4739-38c6-4892-bbb2-d20eda793a3f/id-preview-10534795--79dad419-dc49-4af7-8ba1-cb9be914354e.lovable.app-1780641143365.png" },
     ],
     links: [
       {
