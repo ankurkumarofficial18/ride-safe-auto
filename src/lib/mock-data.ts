@@ -2,21 +2,26 @@ export type Auto = {
   id: string;
   driverFirst: string;
   plateLast4: string;
+  plate: string;
+  avatar: string;
   destination: string;
   seatsAvailable: number;
   seatsTotal: number;
   fareLow: number;
   fareHigh: number;
+  fare: number;
   etaMin: number;
   rating: number;
   verified: boolean;
+  x: number;
+  y: number;
 };
 
 export const mockAutos: Auto[] = [
-  { id: "a1", driverFirst: "Ramesh", plateLast4: "4729", destination: "Boring Road", seatsAvailable: 2, seatsTotal: 4, fareLow: 18, fareHigh: 22, etaMin: 3, rating: 4.7, verified: true },
-  { id: "a2", driverFirst: "Suresh", plateLast4: "8812", destination: "Patna Junction", seatsAvailable: 1, seatsTotal: 4, fareLow: 25, fareHigh: 30, etaMin: 5, rating: 4.9, verified: true },
-  { id: "a3", driverFirst: "Anil", plateLast4: "3301", destination: "Kankarbagh", seatsAvailable: 3, seatsTotal: 4, fareLow: 30, fareHigh: 38, etaMin: 7, rating: 4.5, verified: true },
-  { id: "a4", driverFirst: "Vinod", plateLast4: "9145", destination: "Gandhi Maidan", seatsAvailable: 2, seatsTotal: 4, fareLow: 15, fareHigh: 20, etaMin: 2, rating: 4.6, verified: true },
+  { id: "a1", driverFirst: "Ramesh", plateLast4: "4729", plate: "BR 01 AB 4729", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Ramesh&backgroundColor=b6e3f4", destination: "Boring Road", seatsAvailable: 2, seatsTotal: 4, fareLow: 18, fareHigh: 22, fare: 20, etaMin: 3, rating: 4.7, verified: true, x: 42, y: 30 },
+  { id: "a2", driverFirst: "Suresh", plateLast4: "8812", plate: "BR 01 CD 8812", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Suresh&backgroundColor=ffd5dc", destination: "Patna Junction", seatsAvailable: 1, seatsTotal: 4, fareLow: 25, fareHigh: 30, fare: 28, etaMin: 5, rating: 4.9, verified: true, x: 60, y: 35 },
+  { id: "a3", driverFirst: "Anil", plateLast4: "3301", plate: "BR 01 EF 3301", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Anil&backgroundColor=c0aede", destination: "Kankarbagh", seatsAvailable: 3, seatsTotal: 4, fareLow: 30, fareHigh: 38, fare: 35, etaMin: 7, rating: 4.5, verified: true, x: 30, y: 60 },
+  { id: "a4", driverFirst: "Vinod", plateLast4: "9145", plate: "BR 01 GH 9145", avatar: "https://api.dicebear.com/9.x/avataaars/svg?seed=Vinod&backgroundColor=ffdfbf", destination: "Gandhi Maidan", seatsAvailable: 2, seatsTotal: 4, fareLow: 15, fareHigh: 20, fare: 18, etaMin: 2, rating: 4.6, verified: true, x: 70, y: 55 },
 ];
 
 export const mockStands = [
