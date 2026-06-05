@@ -8,10 +8,10 @@ import { MapPin, Users, ShieldCheck } from "lucide-react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AutoLink — Shared autos for Patna" },
-      { name: "description", content: "Find shared auto-rickshaws on fixed routes. Privacy-first, fixed fares." },
-      { property: "og:title", content: "AutoLink" },
-      { property: "og:description", content: "Shared auto-rickshaws made simple." },
+      { title: "TourBuddy — Live shared-auto tracking" },
+      { name: "description", content: "The first live shared-auto tracking system for fixed-route corridors." },
+      { property: "og:title", content: "TourBuddy" },
+      { property: "og:description", content: "Live shared-auto tracking for fixed-route corridors." },
     ],
   }),
   component: Index,
@@ -43,8 +43,10 @@ function Index() {
                 <path d="M5 17h14l-1.5-6.5a3 3 0 0 0-2.93-2.34H9.43A3 3 0 0 0 6.5 10.5L5 17Zm-1 1v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2h8v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2a2 2 0 0 0 2-2v-3a4 4 0 0 0-1-2.65L17.5 6.34A5 5 0 0 0 13.85 5h-3.7A5 5 0 0 0 6.5 6.34L5 8.35A4 4 0 0 0 4 11v3a2 2 0 0 0 2 2H4Zm3-2a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm10 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" />
               </svg>
             </div>
-            <h1 className="text-4xl font-bold tracking-tight">AutoLink</h1>
-            <p className="mt-2 text-sm opacity-80">Shared autos. Fair fares.</p>
+            <h1 className="text-4xl font-bold tracking-tight">TourBuddy</h1>
+            <p className="mx-auto mt-3 max-w-[260px] text-sm leading-snug opacity-90">
+              The first live shared-auto tracking system for fixed-route corridors.
+            </p>
           </div>
         </div>
       </PhoneShell>

@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { ArrowLeft, Plus, Trash2, LogOut, Languages, Moon, MapPin, Camera } from "lucide-react";
 
 export const Route = createFileRoute("/profile")({
-  head: () => ({ meta: [{ title: "Profile — AutoLink" }] }),
+  head: () => ({ meta: [{ title: "Profile — TourBuddy" }] }),
   component: ProfilePage,
 });
 

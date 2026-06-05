@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { ArrowLeft, Phone } from "lucide-react";
 
 export const Route = createFileRoute("/auth")({
-  head: () => ({ meta: [{ title: "Sign in — AutoLink" }] }),
+  head: () => ({ meta: [{ title: "Sign in — TourBuddy" }] }),
   component: AuthPage,
 });
 

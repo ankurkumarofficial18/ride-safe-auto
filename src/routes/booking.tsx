@@ -2,20 +2,18 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { PhoneShell } from "@/components/PhoneShell";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MapPin, Navigation, Wallet, Smartphone, Banknote, CreditCard, Clock } from "lucide-react";
+import { ArrowLeft, MapPin, Navigation, Banknote, Clock, BadgeCheck, Timer } from "lucide-react";
 import { findAuto, type Auto } from "@/lib/mock-data";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/booking")({
-  head: () => ({ meta: [{ title: "Confirm booking — AutoLink" }] }),
+  head: () => ({ meta: [{ title: "Confirm booking — TourBuddy" }] }),
   component: BookingPage,
 });
-
-type PayMethod = "upi" | "card" | "cash";
 
 function BookingPage() {
   const navigate = useNavigate();
   const [auto, setAuto] = useState<Auto | null>(null);
-  const [pay, setPay] = useState<PayMethod>("upi");
   const [seconds, setSeconds] = useState(60);
 
   useEffect(() => {
@@ -41,10 +39,7 @@ function BookingPage() {
     );
   }
 
-  const baseFare = 15;
-  const km = 3.2;
-  const perKm = 8;
-  const total = baseFare + Math.round(km * perKm);
+  const total = auto.fare;
 
   return (
     <PhoneShell>
@@ -62,6 +57,22 @@ function BookingPage() {
             <p className="text-xs font-medium">Pre-booking window</p>
           </div>
           <p className="font-display text-lg font-bold text-secondary">{seconds}s</p>
+        </div>
+
+        {/* Driver card */}
+        <div className="mx-4 mt-4 flex items-center gap-3 rounded-2xl border bg-card p-3">
+          <img src={auto.avatar} alt={auto.driverFirst} className="h-14 w-14 rounded-xl border bg-accent" />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-1">
+              <p className="font-semibold">{auto.driverFirst}</p>
+              <BadgeCheck className="h-4 w-4 text-secondary" />
+            </div>
+            <p className="font-mono text-xs tracking-wide text-muted-foreground">{auto.plate}</p>
+          </div>
+          <div className="rounded-lg bg-primary/10 px-2.5 py-1.5 text-center">
+            <div className="flex items-center gap-1 text-[10px] font-semibold uppercase text-primary"><Timer className="h-3 w-3" /> ETA</div>
+            <p className="font-display text-base font-bold text-primary leading-none">{auto.etaMin} min</p>
+          </div>
         </div>
 
         {/* Locations */}
@@ -84,24 +95,29 @@ function BookingPage() {
           </div>
         </div>
 
-        {/* Fare */}
+        {/* Fare — fixed govt-approved */}
         <div className="mx-4 mt-4 rounded-2xl border bg-card p-4">
-          <p className="font-display font-semibold">Fare breakdown</p>
-          <div className="mt-3 space-y-1.5 text-sm">
-            <Row label="Base fare" value={`₹${baseFare}`} />
-            <Row label={`Distance (${km} km × ₹${perKm}/km)`} value={`₹${Math.round(km * perKm)}`} />
-            <div className="my-2 border-t" />
-            <Row label="Total (govt. approved)" value={`₹${total}`} bold />
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-display font-semibold">Fixed fare</p>
+              <p className="text-xs text-muted-foreground">Standard auto rate · no surge</p>
+            </div>
+            <p className="font-display text-2xl font-bold text-primary">₹{total}</p>
           </div>
         </div>
 
-        {/* Payment */}
+        {/* Payment — cash only */}
         <div className="mx-4 mt-4">
           <p className="mb-2 font-display font-semibold">Payment method</p>
-          <div className="grid grid-cols-3 gap-2">
-            <PayBtn icon={Smartphone} label="UPI" active={pay === "upi"} onClick={() => setPay("upi")} />
-            <PayBtn icon={CreditCard} label="Card" active={pay === "card"} onClick={() => setPay("card")} />
-            <PayBtn icon={Banknote} label="Cash" active={pay === "cash"} onClick={() => setPay("cash")} />
+          <div className="flex items-center gap-3 rounded-2xl border-2 border-primary bg-accent p-4">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground">
+              <Banknote className="h-5 w-5" />
+            </div>
+            <div className="flex-1">
+              <p className="font-semibold">Cash</p>
+              <p className="text-xs text-muted-foreground">Pay the driver directly in cash</p>
+            </div>
+            <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-semibold text-primary">ONLY</span>
           </div>
         </div>
 
@@ -110,38 +126,18 @@ function BookingPage() {
             className="h-12 w-full text-base"
             onClick={() => {
               sessionStorage.setItem("autolink:fare", String(total));
-              sessionStorage.setItem("autolink:pay", pay);
+              sessionStorage.setItem("autolink:pay", "cash");
+              toast.success("Ride booked!", {
+                description: `${auto.driverFirst} (${auto.plate}) arriving in ${auto.etaMin} min.`,
+              });
               navigate({ to: "/ride" });
             }}
           >
-            <Wallet className="mr-2 h-5 w-5" />
-            Confirm Booking · ₹{total}
+            <Banknote className="mr-2 h-5 w-5" />
+            Confirm Booking · ₹{total} cash
           </Button>
         </div>
       </div>
     </PhoneShell>
-  );
-}
-
-function Row({ label, value, bold }: { label: string; value: string; bold?: boolean }) {
-  return (
-    <div className={`flex justify-between ${bold ? "font-semibold" : "text-muted-foreground"}`}>
-      <span>{label}</span>
-      <span className={bold ? "text-foreground" : ""}>{value}</span>
-    </div>
-  );
-}
-
-function PayBtn({ icon: Icon, label, active, onClick }: { icon: any; label: string; active: boolean; onClick: () => void }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`flex flex-col items-center gap-1 rounded-xl border-2 p-3 transition-colors ${
-        active ? "border-primary bg-accent text-primary" : "border-border bg-card text-muted-foreground"
-      }`}
-    >
-      <Icon className="h-5 w-5" />
-      <span className="text-xs font-medium">{label}</span>
-    </button>
   );
 }
