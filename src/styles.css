@@ -162,17 +162,21 @@
   background: var(--color-background);
 }
 
-.map-backdrop {
-  background-color: oklch(0.95 0.02 150);
-  background-image:
-    linear-gradient(oklch(0.55 0.13 155 / 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.55 0.13 155 / 0.08) 1px, transparent 1px);
-  background-size: 36px 36px, 36px 36px;
-}
-.dark .map-backdrop {
-  background-color: oklch(0.2 0.02 160);
-  background-image:
-    linear-gradient(oklch(0.65 0.15 155 / 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, oklch(0.65 0.15 155 / 0.1) 1px, transparent 1px);
-  background-size: 36px 36px, 36px 36px;
-}
+/* Google-Maps inspired backdrop palette */
+.map-backdrop { background-color: oklch(0.96 0.005 100); }
+.map-backdrop .map-land { fill: oklch(0.97 0.008 95); }
+.map-backdrop .map-park { fill: oklch(0.9 0.07 145); }
+.map-backdrop .map-water { fill: oklch(0.86 0.055 230); }
+.map-backdrop .map-road-casing { stroke: oklch(0.78 0.01 95); }
+.map-backdrop .map-road { stroke: oklch(1 0 0); }
+.map-backdrop .map-street { stroke: oklch(0.92 0.005 95); }
+.map-backdrop .map-road-dash { stroke: oklch(0.85 0.08 80); }
+
+.dark .map-backdrop { background-color: oklch(0.2 0.015 240); }
+.dark .map-backdrop .map-land { fill: oklch(0.24 0.018 240); }
+.dark .map-backdrop .map-park { fill: oklch(0.32 0.06 150); }
+.dark .map-backdrop .map-water { fill: oklch(0.3 0.06 235); }
+.dark .map-backdrop .map-road-casing { stroke: oklch(0.18 0.01 240); }
+.dark .map-backdrop .map-road { stroke: oklch(0.45 0.02 240); }
+.dark .map-backdrop .map-street { stroke: oklch(0.3 0.01 240); }
+.dark .map-backdrop .map-road-dash { stroke: oklch(0.7 0.1 80); }
