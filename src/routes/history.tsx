@@ -6,7 +6,7 @@ import { ArrowLeft, Download } from "lucide-react";
 import { mockHistory, type RideHistoryItem } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/history")({
-  head: () => ({ meta: [{ title: "Ride history — AutoLink" }] }),
+  head: () => ({ meta: [{ title: "Ride history — TourBuddy" }] }),
   component: HistoryPage,
 });
 

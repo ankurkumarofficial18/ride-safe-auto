@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Star } from "lucide-react";
 
 export const Route = createFileRoute("/rating")({
-  head: () => ({ meta: [{ title: "Rate driver — AutoLink" }] }),
+  head: () => ({ meta: [{ title: "Rate driver — TourBuddy" }] }),
   component: RatingPage,
 });
 
