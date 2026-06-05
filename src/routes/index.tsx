@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { PhoneShell } from "@/components/PhoneShell";
+import { PhoneShell, TourBuddyLogo } from "@/components/PhoneShell";
 import { Button } from "@/components/ui/button";
 import { MapPin, Users, ShieldCheck } from "lucide-react";
 
@@ -38,10 +38,8 @@ function Index() {
       <PhoneShell>
         <div className="flex min-h-[100dvh] items-center justify-center bg-primary text-primary-foreground">
           <div className="text-center animate-in fade-in zoom-in duration-700">
-            <div className="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-3xl bg-primary-foreground/15 backdrop-blur">
-              <svg viewBox="0 0 24 24" className="h-12 w-12 fill-current">
-                <path d="M5 17h14l-1.5-6.5a3 3 0 0 0-2.93-2.34H9.43A3 3 0 0 0 6.5 10.5L5 17Zm-1 1v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2h8v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2a2 2 0 0 0 2-2v-3a4 4 0 0 0-1-2.65L17.5 6.34A5 5 0 0 0 13.85 5h-3.7A5 5 0 0 0 6.5 6.34L5 8.35A4 4 0 0 0 4 11v3a2 2 0 0 0 2 2H4Zm3-2a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm10 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" />
-              </svg>
+            <div className="mx-auto mb-4 grid h-24 w-24 place-items-center rounded-3xl bg-primary-foreground shadow-xl">
+              <TourBuddyLogo size={72} />
             </div>
             <h1 className="text-4xl font-bold tracking-tight">TourBuddy</h1>
             <p className="mx-auto mt-3 max-w-[260px] text-sm leading-snug opacity-90">

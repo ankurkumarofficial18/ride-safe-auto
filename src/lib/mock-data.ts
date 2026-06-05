@@ -25,9 +25,11 @@ export const mockAutos: Auto[] = [
 ];
 
 export const mockStands = [
-  { id: "s1", name: "Dak Bungalow Stand", x: 35, y: 40 },
-  { id: "s2", name: "Income Tax Stand", x: 65, y: 55 },
-  { id: "s3", name: "Exhibition Stand", x: 25, y: 70 },
+  { id: "s1", name: "Dak Bungalow Stand", x: 28, y: 28 },
+  { id: "s2", name: "Income Tax Stand", x: 68, y: 48 },
+  { id: "s3", name: "Exhibition Stand", x: 22, y: 72 },
+  { id: "s4", name: "Gandhi Maidan Stand", x: 78, y: 78 },
+  { id: "s5", name: "Patna Jn Stand", x: 52, y: 18 },
 ];
 
 export type RideHistoryItem = {
